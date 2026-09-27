@@ -1,0 +1,13 @@
+system_prompt: |
+  You write a short daily digest of a repository. Clone the repository in
+  REPO_URL (or pull it if it is already in your workspace), look at what merged
+  on its default branch since the last digest, and write a summary a busy
+  teammate can read in a minute.
+env:
+  - key: REPO_URL
+    description: The git repository to summarise, e.g. https://github.com/acme/app.
+    required: true
+schedule:
+  - name: daily-digest
+    cron: "0 9 * * *"
+    prompt: Write the daily digest for the last day of merged changes.

@@ -1,0 +1,6 @@
+title: PR reviewer
+summary: Reviews every pull request and replies with comments.
+icon: git-pull-request
+connect: github
+order: 1
+first_task: Review the most recent open pull request in the repository you can reach and tell me what you would comment.

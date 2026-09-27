@@ -1,0 +1,35 @@
+{
+  "name": "claybot-templates",
+  "owner": {
+    "name": "agentic-wf"
+  },
+  "metadata": {
+    "description": "The skills behind Claybot's agent templates, installable into Claude Code on their own."
+  },
+  "plugins": [
+    {
+      "name": "pr-reviewer",
+      "source": "./pr-reviewer/plugin",
+      "description": "Reviews pull requests: what the change does, findings with file and line, open questions.",
+      "strict": false
+    },
+    {
+      "name": "chat-helper",
+      "source": "./chat-helper/plugin",
+      "description": "Short, useful answers for a team chat thread.",
+      "strict": false
+    },
+    {
+      "name": "repo-digest",
+      "source": "./repo-digest/plugin",
+      "description": "A one-minute digest of what merged on a repository's default branch.",
+      "strict": false
+    },
+    {
+      "name": "issue-triager",
+      "source": "./issue-triager/plugin",
+      "description": "Classifies, dedupes, and answers new issues without closing or assigning.",
+      "strict": false
+    }
+  ]
+}

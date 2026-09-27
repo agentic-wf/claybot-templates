@@ -1,0 +1,6 @@
+title: Daily repo digest
+summary: Summarises yesterday's merged changes every morning.
+icon: calendar-clock
+connect: none
+order: 3
+first_task: Write today's digest now, so I can see what it looks like.

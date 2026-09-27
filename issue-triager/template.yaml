@@ -1,0 +1,6 @@
+title: Issue triager
+summary: Labels, dedupes, and answers new issues as they arrive.
+icon: tags
+connect: github
+order: 4
+first_task: Triage the three most recent open issues in the repository you can reach and show me what you would post.
