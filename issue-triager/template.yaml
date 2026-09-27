@@ -1,6 +1,10 @@
 title: Issue triager
-summary: Labels, dedupes, and answers new issues as they arrive.
+summary: Classifies new issues, finds duplicates, and asks reporters for exactly what is missing.
 icon: tags
 connect: github
 order: 4
-first_task: Triage the three most recent open issues in the repository you can reach and show me what you would post.
+first_task: Triage the three most recent open issues in a repository you can reach, and show me the comment you would post on each.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-haiku-4.5

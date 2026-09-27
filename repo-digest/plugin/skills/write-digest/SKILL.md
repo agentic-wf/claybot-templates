@@ -1,17 +1,38 @@
 ---
 name: write-digest
-description: Use when asked for a digest, a summary of recent changes, or on the daily schedule.
+description: Write a digest of what merged on a repository's branch since the last digest. Use on the daily schedule and whenever someone asks what changed.
 ---
 
 # Write the digest
 
-1. Clone `$REPO_URL` into the workspace if it is not there; otherwise fetch.
-2. List the commits on the default branch from the last 24 hours. Group merge commits with the pull request they came from.
-3. Write:
-   - **Headline**: one sentence on the most important change.
-   - **Changes**: one bullet per merged change — what it does for a user or
-     developer, and who made it. Cite short SHAs.
-   - **Watch out**: anything risky — migrations, config changes, reverted work.
-4. If nothing merged, say so in one line.
+## 1. Update the clone
 
-Keep it under 200 words.
+Clone `$REPO_URL` into `repo/` in the workspace on first use (with
+`GITHUB_TOKEN` as the password for a private repository), otherwise
+`git fetch`. Follow `$DIGEST_BRANCH`, or the default branch when it is empty.
+
+## 2. Find the range
+
+Read the last reported commit from `.digest-state` in the workspace. The range
+is that commit up to the branch head. With no state file — the first run —
+use the last 7 days. If the saved commit is no longer in the history (force
+push), fall back to the last 7 days and say so.
+
+If the range is empty, reply `No changes merged since <date>.` and stop.
+
+## 3. Collect the changes
+
+`git log --first-parent --format='%H%x09%an%x09%s' <range>` lists one line per
+merge or direct commit. For a merge, read the pull request title and number
+from the subject or the merged commits. Then apply `references/rules.md`:
+group, drop noise, and flag risks.
+
+## 4. Write it
+
+Use `references/format.md`. Under 250 words; cut detail before cutting
+changes.
+
+## 5. Remember
+
+Only after writing the digest, save the head SHA to `.digest-state`, so a
+failed run is retried from the same point tomorrow.

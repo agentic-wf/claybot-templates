@@ -1,6 +1,6 @@
 title: Daily repo digest
-summary: Summarises yesterday's merged changes every morning.
+summary: Every morning, what merged since the last digest — grouped, de-noised, with risks called out.
 icon: calendar-clock
 connect: none
 order: 3
-first_task: Write today's digest now, so I can see what it looks like.
+first_task: Write the digest now for the last week, so I can see what it looks like.

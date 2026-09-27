@@ -1,6 +1,10 @@
 title: PR reviewer
-summary: Reviews every pull request and replies with comments.
+summary: Reviews each new pull request and comments only on issues it has verified.
 icon: git-pull-request
 connect: github
 order: 1
-first_task: Review the most recent open pull request in the repository you can reach and tell me what you would comment.
+first_task: Review the most recent open pull request in a repository you can reach, and show me the comment you would post.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

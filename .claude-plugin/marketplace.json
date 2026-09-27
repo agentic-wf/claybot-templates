@@ -1,4 +1,5 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "claybot-templates",
   "owner": {
     "name": "agentic-wf"
@@ -10,26 +11,46 @@
     {
       "name": "pr-reviewer",
       "source": "./pr-reviewer/plugin",
-      "description": "Reviews pull requests: what the change does, findings with file and line, open questions.",
-      "strict": false
+      "description": "Reviews pull requests in five passes (repository rules, bugs, history, past reviews, code comments), scores each finding, and reports only those it is at least 80% confident in, with permalinks.",
+      "strict": false,
+      "category": "development",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/pr-reviewer"
     },
     {
       "name": "chat-helper",
       "source": "./chat-helper/plugin",
-      "description": "Short, useful answers for a team chat thread.",
-      "strict": false
+      "description": "A chat teammate: short answers formatted for Slack, Discord, or Telegram, research reported with sources, and clean hand-offs to people.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/chat-helper"
     },
     {
       "name": "repo-digest",
       "source": "./repo-digest/plugin",
-      "description": "A one-minute digest of what merged on a repository's default branch.",
-      "strict": false
+      "description": "A de-noised digest of what merged on a branch since the last one, grouped by impact, with migrations, config, CI, and dependency risks called out.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/repo-digest"
     },
     {
       "name": "issue-triager",
       "source": "./issue-triager/plugin",
-      "description": "Classifies, dedupes, and answers new issues without closing or assigning.",
-      "strict": false
+      "description": "Classifies new issues and bug severity, searches for duplicates three ways, asks for only what is missing, and suggests the repository's own labels.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/issue-triager"
     }
   ]
 }

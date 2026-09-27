@@ -18,10 +18,18 @@ One directory per template. The directory name is the template's id.
 
 ```
 pr-reviewer/
-  template.yaml          # the gallery card — Claybot only
-  agent.yaml             # the agent: system prompt, schedule, mailbox, env
-  plugin/skills/<name>/SKILL.md   # the skills — also the marketplace plugin
+  template.yaml                         # the gallery card — Claybot only
+  agent.yaml                            # the agent: system prompt, schedule, mailbox, env
+  README.md                             # what it does and what it needs
+  plugin/                               # the marketplace plugin, staged into the agent
+    .mcp.json                           # MCP servers (Claude Code dialect)
+    skills/<name>/SKILL.md              # the procedure
+    skills/<name>/references/*.md       # rubrics, checklists, formats the skill reads
 ```
+
+Claybot stages `skills/` (with every file beside a `SKILL.md`) and `.mcp.json`.
+It does not stage `commands/`, `agents/`, or hooks yet, so a template puts its
+procedure in a skill and runs subagents from there when the harness has them.
 
 `template.yaml`:
 
@@ -33,11 +41,30 @@ pr-reviewer/
 | `connect` | Where work comes from: `github`, `gitlab`, `chat`, or `none`. Decides the step the console offers after Create. |
 | `first_task` | A prompt put in the new agent's composer. |
 | `order` | Position in the gallery. |
+| `runtime` | Optional `harness`, `provider`, `model` the template was written for, which quick create preselects. Leave it out to use the deployment's default (a free model). |
 
 `agent.yaml` is an ordinary Claybot agent manifest. Leave out `provider`,
 `model`, and `harness` so the deployment's defaults apply, and never put a
 credential value in it: a secret is declared under `env` with `secret: true`
 and linked by the operator.
+
+## Writing a good template
+
+The bar is [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official):
+a template is a procedure, not a paragraph.
+
+- **Steps, in order,** including when to stop early (drafts, bots, nothing to do).
+- **Rubrics and checklists** in `references/`, so judgement is consistent:
+  what counts, what is noise, how confident is confident enough.
+- **An exact output format.** The agent's final message is what Claybot posts
+  back to the thread, issue, or pull request — so say what it looks like, and
+  tell the agent not to post it itself.
+- **Guardrails** in `agent.yaml`: what the agent never does.
+- **Declared needs:** every credential under `env` (`secret: true`, no value),
+  and a `runtime` when the procedure needs more than the free default — MCP
+  servers need a harness with MCP (Claude Code, Codex, OpenCode; not Pi).
+- A forge-triggered turn starts with a line naming the resource, e.g.
+  `GitHub pull request acme/app#42 https://github.com/acme/app/pull/42`.
 
 ## Adding a template
 

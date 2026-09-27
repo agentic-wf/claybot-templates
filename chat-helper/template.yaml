@@ -1,5 +1,5 @@
 title: Team helper
-summary: Answers questions in Slack, Discord, or Telegram threads.
+summary: A teammate in Slack, Discord, or Telegram that answers, looks things up, and knows when to hand off.
 icon: message-circle
 connect: chat
 order: 2
