@@ -1,0 +1,7 @@
+title: Release notes
+summary: Drafts release notes from everything merged since the last tag, grouped and written for users.
+icon: rocket
+connect: none
+category: Deployment
+order: 13
+first_task: Draft the release notes for the next release of a repository you work on, from everything merged since its last tag.

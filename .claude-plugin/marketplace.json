@@ -5,7 +5,7 @@
     "name": "agentic-wf"
   },
   "metadata": {
-    "description": "The skills behind Claybot's agent templates, installable into Claude Code on their own."
+    "description": "Claybot's curated agents — Development, Productivity, Monitoring, Deployment, Automation — installable into Claude Code on their own."
   },
   "plugins": [
     {
@@ -20,6 +20,39 @@
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/pr-reviewer"
     },
     {
+      "name": "issue-triager",
+      "source": "./issue-triager/plugin",
+      "description": "Classifies new issues and bug severity, searches for duplicates three ways, asks for only what is missing, and suggests the repository's own labels.",
+      "strict": false,
+      "category": "development",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/issue-triager"
+    },
+    {
+      "name": "test-writer",
+      "source": "./test-writer/plugin",
+      "description": "Writes the tests a pull request is missing, runs them, and opens a pull request with only the tests.",
+      "strict": false,
+      "category": "development",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/test-writer"
+    },
+    {
+      "name": "docs-keeper",
+      "source": "./docs-keeper/plugin",
+      "description": "After each merge, finds the docs the change made wrong and opens a pull request that fixes them.",
+      "strict": false,
+      "category": "development",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/docs-keeper"
+    },
+    {
       "name": "chat-helper",
       "source": "./chat-helper/plugin",
       "description": "A chat teammate: short answers formatted for Slack, Discord, or Telegram, research reported with sources, and clean hand-offs to people.",
@@ -31,26 +64,169 @@
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/chat-helper"
     },
     {
+      "name": "meeting-notes",
+      "source": "./meeting-notes/plugin",
+      "description": "Turns a transcript or rough notes into decisions, owners and open questions, and remembers them.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/meeting-notes"
+    },
+    {
+      "name": "research-assistant",
+      "source": "./research-assistant/plugin",
+      "description": "Researches a question across primary sources and replies with a short, cited brief.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/research-assistant"
+    },
+    {
+      "name": "writing-editor",
+      "source": "./writing-editor/plugin",
+      "description": "Edits a draft for clarity and tone, returns the revision, and says what changed and why.",
+      "strict": false,
+      "category": "productivity",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/writing-editor"
+    },
+    {
+      "name": "alert-triager",
+      "source": "./alert-triager/plugin",
+      "description": "Reads each PagerDuty, Datadog or Grafana alert, ties it to what changed, and says how bad it is and what to check first.",
+      "strict": false,
+      "category": "monitoring",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/alert-triager"
+    },
+    {
+      "name": "error-investigator",
+      "source": "./error-investigator/plugin",
+      "description": "For each new Sentry error, finds the code and the change behind it and proposes a fix.",
+      "strict": false,
+      "category": "monitoring",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/error-investigator"
+    },
+    {
+      "name": "uptime-watcher",
+      "source": "./uptime-watcher/plugin",
+      "description": "Checks your URLs every 15 minutes and speaks up only when one goes down, slows down, or recovers.",
+      "strict": false,
+      "category": "monitoring",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/uptime-watcher"
+    },
+    {
+      "name": "incident-scribe",
+      "source": "./incident-scribe/plugin",
+      "description": "Keeps the timeline during an incident, answers \"where are we?\", and drafts the blameless postmortem.",
+      "strict": false,
+      "category": "monitoring",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/incident-scribe"
+    },
+    {
+      "name": "release-notes",
+      "source": "./release-notes/plugin",
+      "description": "Drafts release notes from everything merged since the last tag, grouped and written for users.",
+      "strict": false,
+      "category": "deployment",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/release-notes"
+    },
+    {
+      "name": "release-manager",
+      "source": "./release-manager/plugin",
+      "description": "Walks a release through its checklist, gets your sign-off on a card, then tags it and publishes the notes.",
+      "strict": false,
+      "category": "deployment",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/release-manager"
+    },
+    {
+      "name": "deploy-config-reviewer",
+      "source": "./deploy-config-reviewer/plugin",
+      "description": "Reviews pull requests that touch Dockerfiles, Kubernetes, Helm, Terraform or CI for security, reliability and cost risks.",
+      "strict": false,
+      "category": "deployment",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/deploy-config-reviewer"
+    },
+    {
+      "name": "migration-checker",
+      "source": "./migration-checker/plugin",
+      "description": "Reviews database migrations in pull requests for locks, downtime, data loss and missing rollbacks.",
+      "strict": false,
+      "category": "deployment",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/migration-checker"
+    },
+    {
       "name": "repo-digest",
       "source": "./repo-digest/plugin",
       "description": "A de-noised digest of what merged on a branch since the last one, grouped by impact, with migrations, config, CI, and dependency risks called out.",
       "strict": false,
-      "category": "productivity",
+      "category": "automation",
       "author": {
         "name": "agentic-wf"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/repo-digest"
     },
     {
-      "name": "issue-triager",
-      "source": "./issue-triager/plugin",
-      "description": "Classifies new issues and bug severity, searches for duplicates three ways, asks for only what is missing, and suggests the repository's own labels.",
+      "name": "weekly-report",
+      "source": "./weekly-report/plugin",
+      "description": "Every Monday, a one-screen report of last week across your repositories — shipped, stuck, and what needs a decision.",
       "strict": false,
-      "category": "productivity",
+      "category": "automation",
       "author": {
         "name": "agentic-wf"
       },
-      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/issue-triager"
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/weekly-report"
+    },
+    {
+      "name": "stale-sweeper",
+      "source": "./stale-sweeper/plugin",
+      "description": "Each day, nudges issues and pull requests that went quiet, and lists the ones ready to close.",
+      "strict": false,
+      "category": "automation",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/stale-sweeper"
+    },
+    {
+      "name": "dependency-watch",
+      "source": "./dependency-watch/plugin",
+      "description": "Every week, checks your repositories for outdated and vulnerable dependencies and keeps one tracking issue up to date.",
+      "strict": false,
+      "category": "automation",
+      "author": {
+        "name": "agentic-wf"
+      },
+      "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/dependency-watch"
     }
   ]
 }

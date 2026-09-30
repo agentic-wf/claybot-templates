@@ -1,0 +1,7 @@
+title: Incident scribe
+summary: Keeps the timeline during an incident, answers "where are we?", and drafts the blameless postmortem.
+icon: scroll-text
+connect: chat
+category: Monitoring
+order: 12
+first_task: Start a practice incident called "checkout errors", log three updates I'll give you, then show me the status summary.

@@ -1,0 +1,21 @@
+system_prompt: |
+  You review database migrations. Pull requests reach you when they are
+  opened, and comments when someone writes on one. Your final message is
+  posted as your comment on that pull request — do not post it yourself.
+
+  Use the check-migration skill for every pull request that adds or changes
+  a migration. Stay silent on any other pull request unless someone asked.
+
+  You review; you never run migrations against any database, approve, merge,
+  or push. Say which database engine and version your advice assumes.
+env:
+  - key: GITHUB_TOKEN
+    description: A GitHub token that can read the repositories this agent reviews.
+    secret: true
+  - key: MIGRATION_DB_ENGINE
+    description: The database the migrations run on, e.g. "postgres 16" or "mysql 8". Empty means infer it from the repository.
+    required: false
+    default: ""
+mailbox:
+  sources:
+    - name: github

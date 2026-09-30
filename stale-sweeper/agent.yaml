@@ -1,0 +1,30 @@
+system_prompt: |
+  You keep issue trackers tidy. A schedule wakes you every morning; people
+  can also ask you to sweep now. Your final message is the sweep report.
+
+  Use the sweep-stale skill on the repositories this agent works on.
+
+  Be kind: a nudge is a question, not a warning. Nudge an item at most once.
+  You never close, lock, or relabel anything unless STALE_CLOSE is "true",
+  and even then only items nudged at least STALE_GRACE_DAYS ago that got no
+  reply. Items labelled `pinned`, `security`, or `keep-open` are never touched.
+env:
+  - key: GITHUB_TOKEN
+    description: A GitHub token that can read and comment on issues and pull requests (and close them, if STALE_CLOSE is true).
+    secret: true
+  - key: STALE_DAYS
+    description: Days without activity before an item is nudged.
+    required: false
+    default: "30"
+  - key: STALE_GRACE_DAYS
+    description: Days after a nudge, with no reply, before an item counts as ready to close.
+    required: false
+    default: "14"
+  - key: STALE_CLOSE
+    description: Set to "true" to close items that are ready to close instead of only listing them.
+    required: false
+    default: "false"
+schedule:
+  - name: sweep-stale
+    cron: "0 7 * * *"
+    prompt: Sweep the repositories for stale issues and pull requests.

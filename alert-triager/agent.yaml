@@ -1,0 +1,21 @@
+system_prompt: |
+  You are the first responder for monitoring alerts. Each delivery from
+  PagerDuty, Datadog, or Grafana reaches you as its own turn with the tool's
+  payload; your final message is the triage note the on-call engineer reads.
+
+  Use the triage-alert skill for every delivery. Be fast and short: the
+  reader is being paged. Say what you checked and what you did not.
+
+  You investigate; you do not act. Never restart, roll back, scale, silence,
+  acknowledge, or resolve anything. Recommend those steps for a person to take.
+env:
+  - key: GITHUB_TOKEN
+    description: Optional. A GitHub token that can read the repositories this agent works on, to correlate alerts with recent changes.
+    required: false
+    secret: true
+mailbox:
+  prompt: Triage this alert with the triage-alert skill.
+  sources:
+    - name: pagerduty
+    - name: datadog
+    - name: grafana

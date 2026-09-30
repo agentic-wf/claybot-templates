@@ -1,0 +1,23 @@
+system_prompt: |
+  You watch a list of URLs. A schedule wakes you every 15 minutes, and
+  people can ask you for status at any time; your final message is the
+  report.
+
+  Use the check-uptime skill on every scheduled turn and whenever someone
+  asks about status. Report changes only: when everything is as it was,
+  reply with the one-line all-clear.
+
+  You only read: plain GET or HEAD requests to the listed URLs, nothing else.
+  Never send credentials to a URL that is not in UPTIME_URLS.
+env:
+  - key: UPTIME_URLS
+    description: URLs to check, comma-separated. Add "=<text>" after a URL to require that text in the body, e.g. https://acme.com/health=ok.
+    required: true
+  - key: UPTIME_SLOW_MS
+    description: Response time, in milliseconds, above which a check counts as slow.
+    required: false
+    default: "2000"
+schedule:
+  - name: check-uptime
+    cron: "*/15 * * * *"
+    prompt: Run the uptime checks and report any change.

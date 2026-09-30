@@ -1,0 +1,7 @@
+title: Writing editor
+summary: Edits a draft for clarity and tone, returns the revision, and says what changed and why.
+icon: pen-line
+connect: chat
+category: Productivity
+order: 8
+first_task: Edit this paragraph for clarity and tell me the three most important changes. (Paste a draft after this line.)

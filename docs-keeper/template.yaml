@@ -1,0 +1,7 @@
+title: Docs keeper
+summary: After each merge, finds the docs the change made wrong and opens a pull request that fixes them.
+icon: book-open
+connect: github
+category: Development
+order: 4
+first_task: Look at the last five merged pull requests in a repository you work on and tell me which docs, if any, they left out of date.

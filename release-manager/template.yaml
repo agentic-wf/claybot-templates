@@ -1,0 +1,11 @@
+title: Release manager
+summary: Walks a release through its checklist, gets your sign-off on a card, then tags it and publishes the notes.
+icon: package-check
+connect: none
+category: Deployment
+order: 14
+first_task: Check whether a repository you work on is ready to release, and show me the checklist you would ask me to sign off.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

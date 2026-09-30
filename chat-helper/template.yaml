@@ -2,5 +2,6 @@ title: Team helper
 summary: A teammate in Slack, Discord, or Telegram that answers, looks things up, and knows when to hand off.
 icon: message-circle
 connect: chat
-order: 2
+category: Productivity
+order: 5
 first_task: Introduce yourself in two sentences and list three things you can help this team with.

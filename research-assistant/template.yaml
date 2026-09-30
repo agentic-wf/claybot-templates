@@ -1,0 +1,11 @@
+title: Research assistant
+summary: Researches a question across primary sources and replies with a short, cited brief.
+icon: search
+connect: chat
+category: Productivity
+order: 7
+first_task: Research the three most-used open-source job queues for Go and give me a brief comparing them.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

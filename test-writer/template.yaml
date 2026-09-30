@@ -1,0 +1,11 @@
+title: Test writer
+summary: Writes the tests a pull request is missing, runs them, and opens a pull request with only the tests.
+icon: flask-conical
+connect: github
+category: Development
+order: 3
+first_task: Pick the most recent merged pull request in a repository you work on that changed code without tests, and tell me which tests you would add and why.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5
