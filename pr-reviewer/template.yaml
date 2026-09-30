@@ -2,6 +2,7 @@ title: PR reviewer
 summary: Reviews each new pull request and comments only on issues it has verified.
 icon: git-pull-request
 connect: github
+categories: [Engineering, Code]
 order: 1
 first_task: Review the most recent open pull request in a repository you can reach, and show me the comment you would post.
 runtime:
