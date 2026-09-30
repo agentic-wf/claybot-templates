@@ -42,3 +42,14 @@ create the GitHub release with the notes (`gh release create` or the API).
 Released <repo> v<version> · <tag link> · <release link>
 From <short sha>. <n> changes. Deploy: <what the tag triggers, if known>
 ```
+
+<!-- card -->
+## Card
+
+When `app_release_scope` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 2 and before step 3, call `app_release_scope` with `title`, `repo`, `base` (the last tag), `head` (the commit), every change since the tag (`id`, `title`, `url`, `author`, `kind`, `risk`) and the readiness `checks`. It waits for the owner (up to 15 minutes). `values.blockers` is a JSON array of the change ids the owner says must not ship. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `change <id>`.
+- `continue` with no blockers — go on to step 3, taking the comments into the notes.
+- `continue` with blockers — a tag cannot leave a change out: say which blockers sit before `head`, propose the last commit before the first one as the release point, and stop until someone agrees.
+- `stop` — stop, and reply with the note.
+
+The sign-off in step 4 is still Claybot's release card. If `app_release_scope` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

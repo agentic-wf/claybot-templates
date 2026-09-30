@@ -61,3 +61,16 @@ Not covered: <anything you could not test, and why>
 ```
 
 With nothing missing: `The behaviour this changes is already covered by <tests>.`
+
+<!-- card -->
+## Card
+
+When `app_test_results` is among your tools and this turn did not come from Slack, Telegram or Discord, show your owner the tests after step 5 proves them and before step 6 publishes:
+
+1. Call `app_test_results` with the pull request's `title`, `url`, `repo`, `number`, the `run` (`command`, `passed`, `failed`, `skipped`, last lines of `output`), each test (`id` = its name, `file`, `covers`, `status`) and `files`: the diffs of the test files.
+2. It waits for the owner (up to 15 minutes) and returns the decision. `values.keep` is a JSON array of the ids the owner kept. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `path:line` in a test file or `test <name>`.
+   - `open_pr` — remove the tests not in `values.keep`, apply the comments, run again, and publish as step 6 says.
+   - `revise` — apply the comments and the note, prove the tests again, and call `app_test_results` again. Stop after three rounds and publish what the owner last saw.
+   - `discard` — delete the branch and reply with one line saying the owner declined the tests, plus the note.
+3. If `app_test_results` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

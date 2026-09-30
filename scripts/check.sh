@@ -11,8 +11,13 @@ for d in $dirs; do
     [ -f "$d/$f" ] || { echo "$d: missing $f"; fail=1; }
   done
   ls "$d"/plugin/skills/*/SKILL.md >/dev/null 2>&1 || { echo "$d: no plugin/skills/*/SKILL.md"; fail=1; }
+  for a in "$d"/plugin/apps/*/; do
+    [ -d "$a" ] || continue
+    for f in app.yaml app.html; do [ -f "$a$f" ] || { echo "$a: missing $f"; fail=1; }; done
+  done
   grep -q "\"source\": \"./$d/plugin\"" .claude-plugin/marketplace.json || { echo "$d: not listed in .claude-plugin/marketplace.json"; fail=1; }
 done
 listed=$(grep -o '"source": "\./[^/]*/plugin"' .claude-plugin/marketplace.json | sed 's|.*"\./\([^/]*\)/plugin"|\1|' | sort)
 [ "$listed" = "$dirs" ] || { echo "marketplace.json lists: $listed"; echo "directories are:      $dirs"; fail=1; }
+python3 scripts/apps/build.py --check || fail=1
 exit $fail

@@ -17,3 +17,13 @@ description: Turn a meeting transcript or rough notes into decisions, action ite
    context before cutting decisions or actions.
 4. **File** the summary as `meetings/<YYYY-MM-DD>-<slug>.md`, and append each
    action item to `meetings/actions.md` as `- [ ] <owner>: <task> (<due>) — <meeting>`.
+
+<!-- card -->
+## Card
+
+When `app_meeting_summary` is among your tools and this turn did not come from Slack, Telegram or Discord, before step 4 files it, call `app_meeting_summary` with the meeting `title`, `date`, `people`, and the `decisions`, `actions` (`title`, `owner`, `due`) and open `questions`, each with an `id`. It waits for the owner (up to 15 minutes). `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `decision <id>`, `action <id>` or `question <id>`.
+- `file` — apply the comments (an owner or a date they give is now stated) and file as step 4 says.
+- `revise` — apply the comments and the note and call `app_meeting_summary` again. Stop after three rounds and file what the owner last saw.
+
+If `app_meeting_summary` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

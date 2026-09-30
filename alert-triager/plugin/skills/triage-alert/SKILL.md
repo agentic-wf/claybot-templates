@@ -50,3 +50,16 @@ Rank at most three likely causes. It is fine to say "no evidence yet".
 **Recent changes:** <PR/commit links, or "none in the last 3h">
 <link to the alert>
 ```
+
+<!-- card -->
+## Card
+
+When `app_alert_triage` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 5 also call `app_alert_triage` with the alert's `title`, `severity`, `source`, `url`, your note as `summary`, the candidate `changes` from step 4 (`title`, `url`, `when`, `why`), the checks for a person as `next`, and a `ref` naming the alert and the repositories you looked at. It returns at once — never wait on it; your note is still the reply.
+
+The owner may decide later; that arrives as a new turn carrying the decision and `values.ref`. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `summary:L<line>` or `change <id>`.
+- `dig` — investigate further along the note and comments, and reply with what you found.
+- `false_alarm` — record the alert's signature and the note in `alerts/false-alarms.md`, which step 2 reads when it dedupes.
+- `escalate` — draft a short escalation message for a person to send: impact, what is known, what is not.
+
+If `app_alert_triage` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

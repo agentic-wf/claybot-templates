@@ -54,3 +54,16 @@ and severity to the closest existing labels. If `TRIAGE_APPLY_LABELS` is
 
 Use `references/comment-format.md`. Keep it under 150 words unless you are
 answering a question.
+
+<!-- card -->
+## Card
+
+When `app_issue_triage` is among your tools and this turn did not come from Slack, Telegram or Discord, let your owner check the triage before step 7's comment is posted:
+
+1. Call `app_issue_triage` with the issue's `title`, `url`, `repo`, `number`, `type`, `severity`, your suggested `labels` (`id` = exact label name, `why`), `duplicates` (`id` = issue number, `title`, `url`, `why`), `missing` (each question to the reporter as `title`) and the `reply` you wrote.
+2. It waits for the owner (up to 15 minutes) and returns the decision. `values.labels` is a JSON array of the ids the owner kept. `values.duplicates` is the same for duplicates, and `values.reply`, when present, is the owner's edit of your reply — post it as written.
+   - `post` — post the reply (theirs if edited). Apply `values.labels` when TRIAGE_APPLY_LABELS is "true", otherwise name them as suggestions.
+   - `duplicate` — post a short, warm comment pointing at the issues in `values.duplicates`, and suggest the `duplicate` label. Never close it.
+   - `hold` — post nothing: end the turn with an empty final message.
+3. If `app_issue_triage` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

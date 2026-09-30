@@ -49,3 +49,14 @@ Match the style of the repository's CHANGELOG.md if it has one; otherwise:
 
 Omit an empty section. When asked, add it to CHANGELOG.md on a branch
 `release-notes/<version>` and open a pull request.
+
+<!-- card -->
+## Card
+
+When `app_notes_review` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 5 call `app_notes_review` with `<version> — <date>` as `title`, `repo`, `range` and the `notes`. It waits for the owner (up to 15 minutes). `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `notes:L<line>`; `quote` is the text they selected.
+- `changelog_pr` — apply the comments and open a pull request that adds the notes to CHANGELOG.md; reply with its link.
+- `revise` — apply the comments and the note and call `app_notes_review` again. Stop after three rounds.
+- `keep` — reply with the notes, comments applied, as the draft.
+
+If `app_notes_review` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

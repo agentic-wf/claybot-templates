@@ -36,3 +36,14 @@ changes.
 
 Only after writing the digest, save the head SHA to `.digest-state`, so a
 failed run is retried from the same point tomorrow.
+
+<!-- card -->
+## Card
+
+When `app_digest` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 4 also call `app_digest` with `title`, every change in the digest (`id`, `title`, `url`, `author`, `group`, `risk` when it has one) and a `ref` naming the repository and range. It returns at once — never wait on it; the digest is still your reply.
+
+The owner may decide later; that arrives as a new turn. `values.changes` is a JSON array of the ids the owner selected.
+- `look` — read each selected change's diff and discussion and reply with what it does, what it risks and what to watch, with the note as the angle.
+
+If `app_digest` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

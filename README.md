@@ -1,4 +1,4 @@
-# Claybot templates
+# Claybot plugins (official)
 
 Claybot's curated catalog: the agents the New agent page lists under
 Development, Productivity, Monitoring, Deployment, and Automation. Claybot-api fetches
@@ -9,8 +9,8 @@ The same repository is a Claude Code plugin marketplace, so the skills behind
 each template also install on their own:
 
 ```
-/plugin marketplace add agentic-wf/claybot-templates
-/plugin install pr-reviewer@claybot-templates
+/plugin marketplace add claybots/claybot-plugins-official
+/plugin install pr-reviewer@claybot-plugins-official
 ```
 
 ## Layout
@@ -26,9 +26,11 @@ pr-reviewer/
     .mcp.json                           # MCP servers (Claude Code dialect)
     skills/<name>/SKILL.md              # the procedure
     skills/<name>/references/*.md       # rubrics, checklists, formats the skill reads
+    apps/<name>/app.yaml                # the card's tool: input, actions, form — generated
+    apps/<name>/app.html                # the card's page — generated
 ```
 
-Claybot stages `skills/` (with every file beside a `SKILL.md`) and `.mcp.json`.
+Claybot stages `skills/` (with every file beside a `SKILL.md`), `.mcp.json` and `apps/`.
 It does not stage `commands/`, `agents/`, or hooks yet, so a template puts its
 procedure in a skill and runs subagents from there when the harness has them.
 
@@ -49,6 +51,32 @@ procedure in a skill and runs subagents from there when the harness has them.
 `model`, and `harness` so the deployment's defaults apply, and never put a
 credential value in it: a secret is declared under `env` with `secret: true`
 and linked by the operator.
+
+## Cards
+
+Every template ships one app: an MCP App card the agent opens in the owner's
+console chat as the tool `app_<name>`, for the one decision its workflow has —
+post this review, open this docs pull request, close these stale issues. The
+card shows what the agent found (diffs with line comments, documents with
+passage comments, findings to keep, rows to pick) and returns the owner's
+decision; the agent then acts on it. The skill that owns the workflow says
+when to call it, what each decision means, and to carry on as before when the
+card is not offered (a deployment with package apps off, a Slack, Telegram or
+Discord turn) or comes back unanswered.
+
+The cards are generated. `scripts/apps/build.py` holds one spec per app and
+writes its `app.yaml`, its `app.html` (the shared view in
+`scripts/apps/lib.js` around `page.html` and the MCP Apps host protocol in
+`protocol.js`, copied from Claybot's package-creator template) and the
+`## Card` section of the owning skill. Change the spec or the view and run
+`python3 scripts/apps/build.py`; `scripts/check.sh` fails when anything is out
+of date. A gate card (`mode: gate`) holds the tool call up to 15 minutes; a
+show card returns at once and the owner's later click becomes a new turn, so
+scheduled and paging workflows never wait on a person.
+
+A card's page lists no `csp`, so it reaches nothing outside itself, and a
+decision is only ever one of its app.yaml's actions plus its flat `fields`:
+comments and picked rows travel as JSON strings in those fields.
 
 ## Writing a good template
 
@@ -72,9 +100,12 @@ a template is a procedure, not a paragraph.
 
 1. Copy a directory and edit it.
 2. Add its plugin to `.claude-plugin/marketplace.json`.
-3. Run `scripts/check.sh`.
-4. In the claybot repo, run
+3. Give it a card: add a spec to `scripts/apps/build.py` and run it.
+4. Run `scripts/check.sh`.
+5. In the claybot repo, run
    `CLAYBOT_TEMPLATES_REPO=file://$PWD go test ./claybot-api/internal/api/playbook -run Template`,
    which puts every template through the review Create runs.
 
-The whole repository is fetched in one clone, capped at 512 KiB of text.
+The whole repository is fetched in one clone, capped at 4 MiB of text and 4096
+files (`packages.MaxCatalogBytes`; a Claybot from before the catalog cap reads
+it against the 512 KiB package cap, which the cards exceed).

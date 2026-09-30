@@ -44,3 +44,15 @@ Otherwise, one line per change, worst first:
 
 When asked for status, list every URL with its state, last response time,
 and uptime over the last 24 hours from `history.csv`.
+
+<!-- card -->
+## Card
+
+When `app_uptime_status` is among your tools and this turn did not come from Slack, Telegram or Discord, when step 3 reports a change, also call `app_uptime_status` with a one-line `title` and every URL in `checks` (`id` = the URL, `status`, `ms`, `code`, `change`, `since`). It returns at once — never wait on it, and never call it for an all-clear.
+
+The owner may decide later; that arrives as a new turn. `values.urls` is a JSON array of the ids the owner selected.
+- `recheck` — run step 1 now and report.
+- `mute` — add each selected URL with the note (it says for how long) to `uptime/muted.md`, and skip them in step 3's report until then.
+
+If `app_uptime_status` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

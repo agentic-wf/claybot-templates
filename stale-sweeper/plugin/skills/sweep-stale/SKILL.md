@@ -40,3 +40,15 @@ Ready to close (<n>): #3 <title> (quiet since <date>), …
 ```
 
 With nothing to do: `Nothing stale today.`
+
+<!-- card -->
+## Card
+
+When `app_stale_sweep` is among your tools and this turn did not come from Slack, Telegram or Discord, when step 3 finds items that stayed silent, also call `app_stale_sweep` with a one-line `title`, those `items` (`id`, `title`, `url`, `kind`, `quiet`, `nudged`) and a `ref` naming the repository. It returns at once — never wait on it.
+
+The owner may decide later; that arrives as a new turn with `values.ref`. `values.items` is a JSON array of the ids the owner selected.
+- `close` — close each selected item with a kind closing comment (the note, if any, goes in it). The owner's selection is the permission STALE_CLOSE otherwise gives, for these items only; `pinned`, `security` and `keep-open` items are still never touched.
+- `keep_open` — add the `keep-open` label to each selected item if you can, otherwise list them in `stale/keep-open.md`, and never nudge them again.
+
+If `app_stale_sweep` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

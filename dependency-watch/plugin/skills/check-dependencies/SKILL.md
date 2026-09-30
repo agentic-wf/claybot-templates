@@ -58,3 +58,15 @@ Skipped: <checks that could not run, and why>
 One line per repository: what is new or fixed since last week (compare with
 `deps/<repo>.json`, then save the new results there), with the issue link.
 `No change since <date>.` when nothing moved.
+
+<!-- card -->
+## Card
+
+When `app_dependency_report` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 4 also call `app_dependency_report` with a one-line `title`, the report issue's `url`, the findings as `deps` (`id` = `<ecosystem>:<package>`, `title`, `risk`, `kind`, `advisory`, `url`, `reachable`) and a `ref` naming the repository. It returns at once — never wait on it.
+
+The owner may decide later; that arrives as a new turn with `values.ref`. `values.deps` is a JSON array of the ids the owner selected. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `dep <id>`.
+- `accept_risk` — list the selected findings with the note under **Accepted risks** in the report issue, and leave them out of later rankings until a new advisory appears.
+- `recheck` — run the check now, even off schedule.
+
+If `app_dependency_report` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

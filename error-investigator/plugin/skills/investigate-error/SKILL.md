@@ -50,3 +50,16 @@ the repository has tests nearby. With `ERROR_OPEN_DRAFT_PR=true`, push it to
 
 <diff, or the draft PR link>
 ```
+
+<!-- card -->
+## Card
+
+When `app_error_fix` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 6 also call `app_error_fix` with the error's `title`, `url`, `release`, `culprit`, your `cause`, the in-app `frames`, the `suspect` change, the proposed fix as `files` (a diff per file), and a `ref` naming the repository, the release and the Sentry issue. It returns at once — never wait on it; your note is still the reply.
+
+The owner may decide later; that arrives as a new turn carrying the decision and `values.ref`. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `cause:L<line>` or `path:line` in the fix.
+- `open_draft_pr` — open a draft pull request with the fix, the comments applied. The owner's click is the permission ERROR_OPEN_DRAFT_PR otherwise gives; never push to a default branch or merge.
+- `dig` — look further along the note and comments, and reply with what changed in your understanding.
+- `not_a_bug` — record the issue and the note in `errors/not-bugs.md` and read it before investigating the same error again.
+
+If `app_error_fix` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->
