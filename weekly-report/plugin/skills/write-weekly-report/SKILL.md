@@ -38,3 +38,14 @@ opened vs closed issues with the previous week if `reports/` has it.
 
 Use `references/format.md`, under 300 words. Save a copy as
 `reports/<YYYY>-W<week>.md` for next week's comparison.
+
+<!-- card -->
+## Card
+
+When `app_weekly_report` is among your tools and this turn did not come from Slack, Telegram or Discord, after step 4 also call `app_weekly_report` with `title`, the opening as `summary`, and the `shipped`, `stuck` (with `why`) and `decisions` items, each with an `id`, plus a `ref` naming the week. It returns at once — never wait on it; the report is still your reply.
+
+The owner may decide later; that arrives as a new turn. `values.stuck` is a JSON array of the ids the owner selected. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `summary:L<line>`, `decision <id>` or `stuck <id>`.
+- `discuss` — for each selected stuck item, dig into why it is stuck (reviews, CI, discussion) and reply with what would unstick it, answering each comment.
+
+If `app_weekly_report` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

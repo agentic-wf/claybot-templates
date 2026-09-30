@@ -44,3 +44,16 @@ Updated the docs this change affects in #<new pr>:
 
 When nothing was stale, say nothing unless someone asked; then:
 `Checked <n> doc files; none describe what this changed.`
+
+<!-- card -->
+## Card
+
+When `app_docs_review` is among your tools and this turn did not come from Slack, Telegram or Discord, show your owner the edits before step 5 publishes them:
+
+1. Call `app_docs_review` with the merged pull request's `title`, `url`, `repo`, `number`, a `summary` of what changed, and `docs`: each file you edited with its `path`, a one-line `reason`, the whole file `before` (omit for a new file) and `after` your edit.
+2. It waits for the owner (up to 15 minutes) and returns the decision. `values.files` is a JSON array of the ids the owner kept in. `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `path:L<line>`, the line the commented passage starts on in `after`; `quote` is the text they selected.
+   - `open_pr` — apply every comment, drop the files not in `values.files`, then publish as step 5 says.
+   - `revise` — apply the comments and the note, then call `app_docs_review` again with the new text. Stop after three rounds and publish what the owner last saw, with their open comments listed in the pull request body.
+   - `skip` — discard the branch and reply with one line saying the owner kept the docs as they are, plus the note if there is one.
+3. If `app_docs_review` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->

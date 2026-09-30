@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "claybot-templates",
+  "name": "claybot-plugins-official",
   "owner": {
-    "name": "agentic-wf"
+    "name": "claybots"
   },
   "metadata": {
     "description": "Claybot's curated agents — Development, Productivity, Monitoring, Deployment, Automation — installable into Claude Code on their own."
@@ -15,7 +15,7 @@
       "strict": false,
       "category": "development",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/pr-reviewer"
     },
@@ -26,7 +26,7 @@
       "strict": false,
       "category": "development",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/issue-triager"
     },
@@ -37,7 +37,7 @@
       "strict": false,
       "category": "development",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/test-writer"
     },
@@ -48,7 +48,7 @@
       "strict": false,
       "category": "development",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/docs-keeper"
     },
@@ -59,7 +59,7 @@
       "strict": false,
       "category": "productivity",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/chat-helper"
     },
@@ -70,7 +70,7 @@
       "strict": false,
       "category": "productivity",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/meeting-notes"
     },
@@ -81,7 +81,7 @@
       "strict": false,
       "category": "productivity",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/research-assistant"
     },
@@ -92,7 +92,7 @@
       "strict": false,
       "category": "productivity",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/writing-editor"
     },
@@ -103,7 +103,7 @@
       "strict": false,
       "category": "monitoring",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/alert-triager"
     },
@@ -114,7 +114,7 @@
       "strict": false,
       "category": "monitoring",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/error-investigator"
     },
@@ -125,7 +125,7 @@
       "strict": false,
       "category": "monitoring",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/uptime-watcher"
     },
@@ -136,7 +136,7 @@
       "strict": false,
       "category": "monitoring",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/incident-scribe"
     },
@@ -147,7 +147,7 @@
       "strict": false,
       "category": "deployment",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/release-notes"
     },
@@ -158,7 +158,7 @@
       "strict": false,
       "category": "deployment",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/release-manager"
     },
@@ -169,7 +169,7 @@
       "strict": false,
       "category": "deployment",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/deploy-config-reviewer"
     },
@@ -180,7 +180,7 @@
       "strict": false,
       "category": "deployment",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/migration-checker"
     },
@@ -191,7 +191,7 @@
       "strict": false,
       "category": "automation",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/repo-digest"
     },
@@ -202,7 +202,7 @@
       "strict": false,
       "category": "automation",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/weekly-report"
     },
@@ -213,7 +213,7 @@
       "strict": false,
       "category": "automation",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/stale-sweeper"
     },
@@ -224,7 +224,7 @@
       "strict": false,
       "category": "automation",
       "author": {
-        "name": "agentic-wf"
+        "name": "claybots"
       },
       "homepage": "https://github.com/agentic-wf/claybot-templates/tree/main/dependency-watch"
     }

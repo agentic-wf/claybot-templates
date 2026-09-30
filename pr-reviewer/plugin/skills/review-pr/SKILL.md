@@ -81,3 +81,18 @@ confirm the rule file really says it. **Keep only issues scoring 80 or more.**
 Re-check step 1 — a pull request can close or go to draft while you work.
 Then write the comment exactly as `references/comment-format.md` shows. If
 nothing scored 80 or more, use its no-issues form. Do not pad a short review.
+
+<!-- card -->
+## Card
+
+When `app_pr_review` is among your tools and this turn did not come from Slack, Telegram or Discord, let your owner see the review before it is posted: after step 7's second check, and before you write the final message:
+
+1. Call `app_pr_review` with the pull request's `title`, `url`, `repo`, `number`, `author`, your `summary`, every finding you kept (`id`, `title`, `severity`, `category`, `file`, `line`, `body`, and `hunk`: the diff hunk around the line, copied from `git diff`), and `files`: the changed files' patches (`path`, `patch`), at most 20.
+2. It waits for the owner (up to 15 minutes) and returns the decision:
+   - `post` — write the comment from the findings whose ids are in `values.keep` (a JSON array), with `values.summary` in place of your summary when present. Keep the format in `references/comment-format.md`.
+   - `request_changes` — the same, with the first line **Changes requested**.
+   - `hold` — post nothing: end the turn with an empty final message.
+
+   `values.comments`, when present, is a JSON array of `{target, quote?, body}`: the owner's own comments. A target is `path:line`, `path:-line` for a removed line, or `finding <id>`. Add each under a **Reviewer notes** heading, quoting the target, in the owner's words.
+3. If `app_pr_review` is not among your tools, is refused, or comes back expired or cancelled, carry on exactly as the steps above say — the card is an extra, never a reason to stop.
+<!-- /card -->
