@@ -1,6 +1,7 @@
 # Claybot templates
 
-The starting points Claybot's new-agent gallery offers. Claybot-api fetches
+Claybot's curated catalog: the agents the New agent page lists under
+Development, Productivity, Monitoring, Deployment, and Automation. Claybot-api fetches
 this repository (`--templates-repo`) and serves it at `GET /v1/templates`, so a
 template added here reaches every Claybot within ten minutes, with no release.
 
@@ -40,7 +41,8 @@ procedure in a skill and runs subagents from there when the harness has them.
 | `icon` | A [lucide](https://lucide.dev/icons) icon name. |
 | `connect` | Where work comes from: `github`, `gitlab`, `chat`, or `none`. Decides the step the console offers after Create. |
 | `first_task` | A prompt put in the new agent's composer. |
-| `order` | Position in the gallery. |
+| `category` | The New agent page's category: `Development`, `Productivity`, `Monitoring`, `Deployment`, or `Automation`. Keep four to ten per category. |
+| `order` | Position within its category. |
 | `runtime` | Optional `harness`, `provider`, `model` the template was written for, which quick create preselects. Leave it out to use the deployment's default (a free model). |
 
 `agent.yaml` is an ordinary Claybot agent manifest. Leave out `provider`,

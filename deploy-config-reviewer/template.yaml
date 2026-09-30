@@ -1,0 +1,11 @@
+title: Deploy config reviewer
+summary: Reviews pull requests that touch Dockerfiles, Kubernetes, Helm, Terraform or CI for security, reliability and cost risks.
+icon: shield-check
+connect: github
+category: Deployment
+order: 15
+first_task: Review the deployment configuration in a repository you work on (Dockerfiles, Kubernetes, Terraform, CI) and list the three riskiest things you find.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

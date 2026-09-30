@@ -1,0 +1,7 @@
+title: Weekly report
+summary: Every Monday, a one-screen report of last week across your repositories — shipped, stuck, and what needs a decision.
+icon: calendar-range
+connect: none
+category: Automation
+order: 18
+first_task: Write last week's report now for the repositories you work on, so I can see what it looks like.

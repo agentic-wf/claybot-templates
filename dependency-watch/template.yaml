@@ -1,0 +1,7 @@
+title: Dependency watch
+summary: Once a week, checks your repositories for outdated and vulnerable dependencies and keeps one tracking issue up to date.
+icon: package-search
+connect: none
+category: Automation
+order: 20
+first_task: Check one repository you work on for vulnerable and outdated dependencies and show me the report you would put in the tracking issue.

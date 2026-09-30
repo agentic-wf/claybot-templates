@@ -1,0 +1,7 @@
+title: Uptime watcher
+summary: Checks your URLs every 15 minutes and speaks up only when one goes down, slows down, or recovers.
+icon: activity
+connect: none
+category: Monitoring
+order: 11
+first_task: Run the checks now and show me the report you would send if one of my URLs were down.

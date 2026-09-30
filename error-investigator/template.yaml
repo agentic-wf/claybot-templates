@@ -1,0 +1,11 @@
+title: Error investigator
+summary: For each new Sentry error, finds the code and the change behind it and proposes a fix.
+icon: bug
+connect: none
+category: Monitoring
+order: 10
+first_task: Explain what you do with a new Sentry error, then walk through a made-up NullPointerException in a checkout service the way you would report it.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

@@ -1,0 +1,7 @@
+title: Stale sweeper
+summary: Each day, nudges issues and pull requests that went quiet, and lists the ones ready to close.
+icon: archive
+connect: none
+category: Automation
+order: 19
+first_task: List the issues and pull requests in a repository you work on that have been quiet for 30 days, and show me the nudge you would post on one.

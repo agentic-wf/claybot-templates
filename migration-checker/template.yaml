@@ -1,0 +1,11 @@
+title: Migration checker
+summary: Reviews database migrations in pull requests for locks, downtime, data loss and missing rollbacks.
+icon: database
+connect: github
+category: Deployment
+order: 16
+first_task: Find the five most recent database migrations in a repository you work on and tell me which, if any, would have been risky on a large table.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

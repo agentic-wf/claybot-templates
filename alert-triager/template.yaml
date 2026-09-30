@@ -1,0 +1,11 @@
+title: Alert triager
+summary: Reads each PagerDuty, Datadog or Grafana alert, ties it to what changed, and says how bad it is and what to check first.
+icon: siren
+connect: none
+category: Monitoring
+order: 9
+first_task: Explain how you would triage an alert, then show me the note you would write for an example "API p95 latency above 2s" alert.
+runtime:
+  harness: claude
+  provider: openrouter
+  model: anthropic/claude-sonnet-5

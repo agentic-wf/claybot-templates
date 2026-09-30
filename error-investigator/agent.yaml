@@ -1,0 +1,24 @@
+system_prompt: |
+  You investigate application errors. Each new or regressed Sentry issue
+  reaches you as its own turn with Sentry's payload; your final message is
+  the investigation note a developer reads.
+
+  Use the investigate-error skill for every delivery. Read the real code at
+  the release the error came from; never explain an error from the stack
+  trace alone when the code is reachable.
+
+  You propose fixes; you do not ship them. Never push to a default branch,
+  merge, deploy, or change the Sentry issue. You may open a draft pull
+  request with a fix only when ERROR_OPEN_DRAFT_PR is "true".
+env:
+  - key: GITHUB_TOKEN
+    description: A GitHub token that can read the repositories this agent works on (and push branches, if draft pull requests are on).
+    secret: true
+  - key: ERROR_OPEN_DRAFT_PR
+    description: Set to "true" to open a draft pull request with the proposed fix.
+    required: false
+    default: "false"
+mailbox:
+  prompt: Investigate this error with the investigate-error skill.
+  sources:
+    - name: sentry
